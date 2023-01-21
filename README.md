@@ -1,6 +1,4 @@
 # CH9121
-Software for the Waveshare Pico_ETH_CH9121
-
 Micropython files for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi Pico.
 
 These files incorporate the full range of commands provided in:
