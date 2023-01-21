@@ -17,7 +17,7 @@ CH9121_read_chip_settings.py should also be run from Thonny with the Pico attach
 
 https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
 
-You can verify the output CH9181 Mac address against your routerlogin.net access point too.
+You can verify the read CH9181 Mac address against your routerlogin.net listing associated with the expected CH9121 IP address.
 
 The Pico_ETH_CH9121 can be pinged from another computer on the LAN when the network settings are correct. And the read_chip_settings.py file confirms that UART0 is set up properly for RX & TX with the CH9121.
 
