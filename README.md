@@ -19,3 +19,12 @@ CH9121_read_chip_settings.py should also be run from Thonny with the Pico attach
 
 https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
 
+The Pico_ETH_CH9121 can be pinged from another computer on the LAN when the network settings are correct. And the read_chip_settings.py file confirms that UART0 is set up properly for RX & TX with the CH9121.
+
+I recommend the use of this breakout board to confirm GPIO pin usage by LED. It has been very helpful towards this project.
+
+https://www.amazon.com/FREENOVE-Breakout-Raspberry-Terminal-Shield/dp/B0BFB53Y2N/ref=sr_1_3?crid=277Y10PM3UV1E&keywords=freenove+pico+breakout+board&qid=1674280060&sprefix=freenova+pico+breakout+boar%2Caps%2C125&sr=8-3
+
+As I understand it the CH9121 is supposed to wrap the UART write data in TCP/IP addressing information, before forwarding it onto the target IP address & port. It then strips the TCP/IP off incoming data before sending it via UART to the Pico. This requires data transfer from Micropython to Python and back. 
+
+I am developing this software for use having a Pico communicate to a Rpi4B over a LAN. Ultimately I need two Pic's as clients to a Rpi4B server over PoE switcher, as a stand alone LAN. I'll update this repository as the communications software is developed and tested. 
