@@ -19,7 +19,7 @@ https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
 
 You can verify the read CH9181 Mac address against your routerlogin.net listing associated with the expected CH9121 IP address.
 
-The Pico_ETH_CH9121 can be pinged from another computer on the LAN when the network settings are correct. And the read_chip_settings.py file confirms that UART0 is set up properly for RX & TX with the CH9121.
+The Pico_ETH_CH9121 can be pinged from another computer on the LAN when the network settings are correct. And the read_chip_settings.py file confirms that UART0 is set up properly for RX & TX with the CH9121 when it outputs data.
 
 I recommend the use of this breakout board to confirm GPIO pin usage by LED. It has been very helpful towards this project.
 
