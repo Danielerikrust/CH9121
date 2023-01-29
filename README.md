@@ -13,7 +13,7 @@ https://thonny.org/
 
 Adjust your network settings with the variables. IP addresses are separated by comma and not periods as a micropython list. To find your gateway & subnet mask your router will usually have a sticker with a router loggin such as http://routerlogin.net. It will also show the default login & password. While in routerlogin.net search for gateway & submask, and assign your CH9121 the same static IP you assinged in the configuration variables. Otherwise your routers DHCP will try to assign it a random IP address. DHCP support can be enabled on the CH9121 with the parameter configuration file if desired, line 57. 
 
-Interestingly, setting UART0 or UART1 to "Mode 3-UDP Server" will automatically set the Target_IP for that UART to 255.255.255.255. A workaround is to set the Local_IP to *.255, such as 192.168.0.255.
+Interestingly, setting UART0 or UART1 to "Mode 3-UDP Server" will automatically set the Local_IP for that UART to 255.255.255.255. A workaround is to set the Target_IP of the client to *.255, such as 192.168.0.255.
 
 CH9121_read_chip_settings.py should also be run from Thonny with the Pico attached. The read file also does not need to be part of main.py, nor stored in /lib. Just run it when you need to check. It incorporates the full range of read options laid out in:
 
