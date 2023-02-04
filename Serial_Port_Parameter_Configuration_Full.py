@@ -6,7 +6,9 @@ def wait():
     print("..", end="")
     
     
-#Waveshare Pico_ETH_CH9121 GPIO pins in use: 0, 1, 14, 17, GND & VSYS power (also 4 & 5 if UART1 enabled)
+#Waveshare Pico_ETH_CH9121 
+#Waveshare 2-Ch Uart to Eth
+#GPIO pins in use: 0, 1, 14, 17, GND & VSYS power (also 4 & 5 if UART1 enabled)
 
 CFG = Pin(14, Pin.OUT,Pin.PULL_UP) #CH9121 configuration pin, 0 to config, 1 to exit
 RST = Pin(17, Pin.OUT,Pin.PULL_UP) #CH9121 external reset input pin, low active
@@ -52,9 +54,9 @@ uart0.write(b'\x57\xab\x12'+bytes(bytearray(SUBNET_MASK))) #CH9121 set subnet ma
 wait()
 uart0.write(b'\x57\xab\x13'+bytes(bytearray(GATEWAY))) #CH9121 set gateway
 wait()
-#uart0.write(b'\x57\xab\x24'+NO) #CH9121 set if network cable is diconnected NO/YES (Optional)
+#uart0.write(b'\x57\xab\x24'+NO) #CH9121 set to diconnect network cable NO/YES (Optional)
 wait()
-uart0.write(b'\x57\xab\x33'+NO) #CH9121 turn on DHCP NO/YES
+uart0.write(b'\x57\xab\x33'+NO) #CH9121 turn on DHCP auto-obtained IP and DNS domain access NO/YES
 wait()
 #uart0.write(b'\x57\xab\x34'+DOMAIN_NAME) #CH9121 set domain name (maximum length 28 bytes) (Optional)
 wait()
