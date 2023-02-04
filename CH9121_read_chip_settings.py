@@ -97,19 +97,19 @@ u1timeout = str(x[15]) + "*5 ms"
 
 uart0.write(b'\x57\xab\x01') #1 byte reply CH9121 chip version number
 wait()
-uart0.write(b'\x57\xab\x03') #1 byte reply uart0 connected? 
+uart0.write(b'\x57\xab\x03') #1 byte reply uart0 TCP connection status? 
 wait()
-uart0.write(b'\x57\xab\x04') #1 byte reply uart1 connected?
+uart0.write(b'\x57\xab\x04') #1 byte reply uart1 TCP connection status?
 wait()
 
 x=uart0.read(uart0.any())
 ch9121chipnum = str((x[0]))
-u0connected = "Disconnected for chip read"
-u1connected = "Disconnected for chip read"
+u0connected = "TCP Disconnected"
+u1connected = "TCP Disconnected"
 if x[1]>0:
-    u0connected = "Connected"
+    u0connected = "TCP Connected"
 if x[2]>0:
-    u1connected = "Connected"
+    u1connected = "TCP Connected"
     
 #End Configuration Mode
 uart0.write(b'\x57\xab\x5E') #Leave Serial port configuration mode
