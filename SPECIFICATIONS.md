@@ -32,15 +32,17 @@ The default serial parameters of CH9121 Uart 0 & Uart 1 (These match default Pic
 The reset pin, when given a value of 0, produces the following results for the duration of the reset:
 - CH9121 running status indicator led goes off. **(Image #3)**
 - CH9121 power indicator led remains on. **(Image #4)**
+- The left and right lights on the CH9121 RJ45 connector go off. **(Image #8)**
+- On a Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a Reset this light is off.
+
+![The Board](/images/Pico-ETH-CH9121-Board.jpg#center)
+
 - Pico TX GPIO0 and GPIO4 remain high (value 1).
 - Pico RX GPIO1 and GPIO5 go low (value 0).
 - Pico Config GPIO14 remains high (value 1).
 - Pico Reset GPIO17 remains low (value 0).
-- The left and right lights on the CH9121 RJ45 connector go off. **(Image #8)**
-- On a Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a Reset this light is off.
 
-    ![The Board](/images/Pico-ETH-CH9121-Board.jpg#center)
-    ![The Board](/images/Pico-ETH-CH9121-Pinout.jpg#center)
+![The Board](/images/Pico-ETH-CH9121-Pinout.jpg#center)
 
 After a Reset running the CH9121_read_chip_settings.py file shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after a reset.
 
