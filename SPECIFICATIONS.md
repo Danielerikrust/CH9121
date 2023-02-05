@@ -3,6 +3,7 @@ Specifications for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi P
 
 
 **Default Parameters**
+
 UART 1 is disabled and the UART 0 works in TCP CLIENT mode by default.
 Configuration of the CH9121 must be conducted through Uart 0, at 9600 baud.
 
@@ -25,6 +26,7 @@ Clear buffer: Never
 
 
 **Reset Pin**
+
 RST = Pin(17, Pin.OUT,Pin.PULL_UP)  #CH9121 external reset input pin, low active
 RST.value(0)                        #CH9121 external reset input pin 17, (0 active, 1 inactive)
 
@@ -42,4 +44,5 @@ After a Reset running the CH9121_read_chip_settings.py file shows that the user 
 
 
 **UDP Server Mode**
+
 This mode automatically overwrites the Local_IP for that Uart channel to 255.255.255.255. You can set a Python socket to write to an IP such as 192.168.0.255 or 192.168.1.255 to reach this broadcast address. You can also configure a second Pico_Eth_CH9121 in UDP Client Mode with a Target_IP such as 192.168.0.255 or 192.168.1.255 to reach the first Pico in UDP Server Mode.
