@@ -3,7 +3,7 @@ Specifications for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi P
 
 ## Default Parameters
 
-UART 1 is disabled and the UART 0 works in TCP CLIENT mode by default.
+Uart 1 is disabled, and Uart 0 works in *TCP CLIENT* mode by default.
 Configuration of the CH9121 must be conducted through Uart 0, at 9600 baud.
 
 The default network parameters of the CH9121
