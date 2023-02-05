@@ -39,7 +39,7 @@ The reset pin, when given a value of 0, produces the following results for the d
 - Pico RX GPIO1 and GPIO5 go low (value 0).
 - Pico Config GPIO14 remains high (value 1).
 - Pico Reset GPIO17 remains low (value 0).
-- The left and right lights on the CH9121 RJ45 connector go off.
+- The left and right lights on the CH9121 RJ45 connector go off. **(Image #8)**
 - On a Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a Reset this light is off.
 
     ![The Board](/images/Pico-ETH-CH9121-Board.jpg#center)
