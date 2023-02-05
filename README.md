@@ -22,7 +22,7 @@ https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
 To incorporate a read into your *main.py* startup copy *CH9121_read_chip_settings.py* into the Pico's /lib directory. Then add this to *main.py*:
 
     import Serial_Port_Parameter_Configuration_Full
-    import CH9121_read_chip_settings.py
+    import CH9121_read_chip_settings
 
 ## Configuration
 
