@@ -12,12 +12,12 @@ The default network parameters of the CH9121
 - Device/Local IP: 192.168.1.200
 - Subnet mask: 255.255.255.0
 
-The default parameters of Uart 0:
+The default parameters of CH9121 Uart 0:
 - Device/Local port: 2000
 - Target IP: 192.168.1.100
 - Target port: 1000
 
-The default serial parameters of Uart 0 (These match default Pico parameters, except baud):
+The default serial parameters of CH9121 Uart 0 & Uart 1 (These match default Pico parameters, except baud):
 - Baud rate: 9600
 - Timeout: 0
 - Data bit: 8
