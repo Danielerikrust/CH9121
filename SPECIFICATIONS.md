@@ -43,6 +43,7 @@ The reset pin, when given a value of 0, produces the following results for the d
 - On a Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a Reset this light is off.
 
     ![The Board](/images/Pico-ETH-CH9121-Board.jpg#center)
+    ![The Board](/images/Pico-ETH-CH9121-Pinout.jpg#center)
 
 After a Reset running the CH9121_read_chip_settings.py file shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after a reset.
 
