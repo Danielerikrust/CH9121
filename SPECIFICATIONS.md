@@ -42,6 +42,8 @@ The reset pin, when given a value of 0, produces the following results for the d
 - The left and right lights on the CH9121 RJ45 connector go off.
 - On a Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a Reset this light is off.
 
+    ![Whats On Board](/images/CH9121_WhatsOnBoard.png)
+
 After a Reset running the CH9121_read_chip_settings.py file shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after a reset.
 
 
