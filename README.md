@@ -19,6 +19,11 @@ https://thonny.org/
 
 https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
 
+To incorporate a read into your *main.py* startup copy *CH9121_read_chip_settings.py* into the Pico's /lib directory. Then add this to *main.py*:
+
+    import Serial_Port_Parameter_Configuration_Full
+    import CH9121_read_chip_settings.py
+
 ## Configuration
 
 Adjust your network settings with the variables in *Serial_Port_Parameter_Configuration_Full.py*. IP addresses are separated by comma and not periods as a micropython list. To find your gateway & subnet mask your router will usually have a sticker with a router loggin such as http://routerlogin.net or its IP Address. It will also show the default login & password. While in the router admin search for its gateway & submask, and assign your CH9121 the same static IP you assinged in the configuration variables. Otherwise your routers DHCP will try to assign it a random IP address. DHCP support can be enabled on the CH9121 with the parameter configuration file if desired. 
