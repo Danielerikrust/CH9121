@@ -1,6 +1,8 @@
 # CH9121
 Micropython files for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi Pico, and Waveshare 2-Ch_Uart_to_Eth board.
 
+    ![The Board](/images/Pico-ETH-CH9121.jpg#center)
+
 These files incorporate the full range of commands provided in:
 
 https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
