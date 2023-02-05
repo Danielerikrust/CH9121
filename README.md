@@ -9,7 +9,9 @@ https://www.waveshare.com/wiki/Pico-ETH-CH9121
 
 **Installation**
 
-Copy *Serial_Port_Parameter_Configuration_Full.py* to the /lib directory of your Pico. Create that directory in Thonny if not already present. Add "import Serial_Port_Parameter_Configuration_Full" to *main.py*. This saves the network preferences into the CH9121 chip while powered. 
+Copy *Serial_Port_Parameter_Configuration_Full.py* to the /lib directory of your Pico. Create that directory in Thonny if not already present. To save the network preferences into the CH9121 chip while powered add this to *main.py*.
+
+    import Serial_Port_Parameter_Configuration_Full
 
 https://thonny.org/
 
