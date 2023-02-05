@@ -2,27 +2,29 @@
 Specifications for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi Pico, and Waveshare 2-Ch_Uart_to_Eth board.
 
 
+
 **Default Parameters**
 
 UART 1 is disabled and the UART 0 works in TCP CLIENT mode by default.
 Configuration of the CH9121 must be conducted through Uart 0, at 9600 baud.
 
 The default network parameters of the CH9121
-Device/Local IP: 192.168.1.200
-Subnet mask: 255.255.255.0
+-Device/Local IP: 192.168.1.200
+-Subnet mask: 255.255.255.0
 
 The default parameters of Uart 0:
-Device/Local port: 2000
-Target IP: 192.168.1.100
-Target port: 1000
+-Device/Local port: 2000
+-Target IP: 192.168.1.100
+-Target port: 1000
 
-The default serial parameters of Uart 0:
-Baud rate: 9600
-Timeout: 0
-Data bit: 8
-Stop bit: 1
-Parity bit: None
-Clear buffer: Never
+The default serial parameters of Uart 0 (These match default Pico parameters, except baud):
+-Baud rate: 9600
+-Timeout: 0
+-Data bit: 8
+-Stop bit: 1
+-Parity bit: None
+-Clear buffer: Never
+
 
 
 **Reset Pin**
@@ -41,6 +43,7 @@ The reset pin, when given a value of 0, produces the following results for the d
 - On a Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a Reset this light is off.
 
 After a Reset running the CH9121_read_chip_settings.py file shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after a reset.
+
 
 
 **UDP Server Mode**
