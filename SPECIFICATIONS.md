@@ -29,6 +29,7 @@ The default serial parameters of Uart 0 (These match default Pico parameters, ex
 **Reset Pin**
 
 RST = Pin(17, Pin.OUT,Pin.PULL_UP)  #CH9121 external reset input pin, low active
+
 RST.value(0)                        #CH9121 external reset input pin 17, (0 active, 1 inactive)
 
 The reset pin, when given a value of 0, produces the following results for the duration of the reset:
