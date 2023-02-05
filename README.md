@@ -7,7 +7,7 @@ https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
 
 https://www.waveshare.com/wiki/Pico-ETH-CH9121
 
-**Installation**
+## Installation
 
 Copy *Serial_Port_Parameter_Configuration_Full.py* to the /lib directory of your Pico. Create that directory in Thonny if not already present. To save the network preferences into the CH9121 chip while powered add this to *main.py*.
 
@@ -19,13 +19,15 @@ https://thonny.org/
 
 https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
 
-**Configuration**
+## Configuration
 
 Adjust your network settings with the variables in *Serial_Port_Parameter_Configuration_Full.py*. IP addresses are separated by comma and not periods as a micropython list. To find your gateway & subnet mask your router will usually have a sticker with a router loggin such as http://routerlogin.net or its IP Address. It will also show the default login & password. While in the router admin search for its gateway & submask, and assign your CH9121 the same static IP you assinged in the configuration variables. Otherwise your routers DHCP will try to assign it a random IP address. DHCP support can be enabled on the CH9121 with the parameter configuration file if desired. 
 
 You can verify the CH9121 Mac address generated from *CH9121_read_chip_settings.py* against your router admin listing associated with the expected CH9121 IP address.
 
 The Pico_ETH_CH9121 can be pinged from another computer on the LAN when the network settings are correct. And the *CH9121_read_chip_settings.py* file confirms that your Pico UART0 is set up properly for RX & TX with the CH9121 when it outputs data.
+
+## Summary 
 
 I recommend the use of this breakout board to confirm GPIO pin usage by LED. It has been very helpful towards this project.
 
