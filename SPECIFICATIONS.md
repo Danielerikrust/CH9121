@@ -33,7 +33,7 @@ The reset pin, when given a value of 0, produces the following results for the d
 - CH9121 running status indicator led goes off. **(Image #3)**
 - CH9121 power indicator led remains on. **(Image #4)**
 - The left and right lights on the CH9121 RJ45 connector go off. **(Image #8)**
-- On a Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a Reset this light is off.
+- On an external Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a Reset this light is off.
 
 ![The Board](/images/Pico-ETH-CH9121-Board.jpg#center)
 
