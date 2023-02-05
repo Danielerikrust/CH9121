@@ -33,8 +33,8 @@ RST = Pin(17, Pin.OUT,Pin.PULL_UP)  #CH9121 external reset input pin, low active
 RST.value(0)                        #CH9121 external reset input pin 17, (0 active, 1 inactive)
 
 The reset pin, when given a value of 0, produces the following results for the duration of the reset:
-- CH9121 running status indicator led goes off.
-- CH9121 power indicator led remains on.
+- CH9121 running status indicator led goes off. **(Image #3)**
+- CH9121 power indicator led remains on. **(Image #4)**
 - Pico TX GPIO0 and GPIO4 remain high (value 1).
 - Pico RX GPIO1 and GPIO5 go low (value 0).
 - Pico Config GPIO14 remains high (value 1).
