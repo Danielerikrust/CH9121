@@ -116,7 +116,7 @@ uart0.write(b'\x57\xab\x5E') #Leave Serial port configuration mode
 wait()
 CFG.value(1) #CH9121 configuration pin 14, 0 to config, 1 to exit
 
-print("CH9121 firmware set to new parameters")
+print("CH9121 memory set to new parameters")
 print()
 
 
