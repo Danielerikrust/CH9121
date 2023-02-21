@@ -8,15 +8,17 @@
 
 from machine import UART, Pin
 from time import sleep    
-    
+
+
+
 def wait(i):
     time.sleep(i)
     print("..", end="")
-    
 
     
-class CH9121:
     
+class CH9121:
+    #If not using Rpi Pico, change the following RST & CFG Pin numbers to suit your device
     RST = Pin(17, Pin.OUT, Pin.PULL_UP) #CH9121 external reset input pin, low active
     CFG = Pin(14, Pin.OUT, Pin.PULL_UP) #CH9121 configuration pin, 0 to config, 1 to exit
         
@@ -50,11 +52,14 @@ class CH9121:
     UART1_BAUD_RATE = 115200            # BAUD_RATE of UART1 serial port
     UART1_CLEAR_DATA = self.YES         # Set whether to clear old serial port data once connected to the network, NO/YES
       
-        
+  
+
     def __init__(self):  
         self.RST.value(1) #CH9121 external reset input pin 17, (0 active, 1 inactive)
         self.CFG.value(1) #CH9121 configuration pin, 0 to config, 1 to exit
-    
+   
+
+
     def configure(self): 
         uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1)) #configuration commands required to be sent at a fixed rate of 9600 baud on UART0 only
         
@@ -137,7 +142,7 @@ class CH9121:
         
         uart0 = UART(0, baudrate=self.UART0_BAUD_RATE, tx=Pin(0), rx=Pin(1))
         
-   
+  
 
    def read_settings(self):
         uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1)) #configuration commands required to be sent at a fixed rate of 9600 baud on UART0 only
