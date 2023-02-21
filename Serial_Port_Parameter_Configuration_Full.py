@@ -16,10 +16,10 @@ RST.value(1) #CH9121 external reset input pin 17, (0 active, 1 inactive)
 uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1)) #configuration commands required to be sent at a fixed rate of 9600 baud on UART0 only
 
 #Variables specific to CH9121 hat
-GATEWAY = (70,191,200,1)             # GATEWAY / Router for LAN
-SUBNET_MASK = (255,255,255,0)        # SUBNET_MASK for LAN
-LOCAL_IP = (192,168,1,15)            # LOCAL_IP of CH9121 on LAN
-#DOMAIN_NAME = b'name.com'           # DOMAIN_NAME of CH9121 IP, replace name.com
+GATEWAY = (70,191,200,1)            # GATEWAY / Router for LAN
+SUBNET_MASK = (255,255,255,0)       # SUBNET_MASK for LAN
+LOCAL_IP = (192,168,1,15)           # LOCAL_IP of CH9121 on LAN
+#DOMAIN_NAME = b'name.com'          # DOMAIN_NAME of CH9121 IP, replace name.com
 
 #Variables specific to UART0 serial port
 UART0_MODE = 1                      # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
