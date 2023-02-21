@@ -36,7 +36,7 @@ class CH9121:
     UART0_TARGET_IP = (192,168,1,100)   # TARGET_IP of destination
     UART0_TARGET_PORT = 3500            # TARGET_PORT of destination
     UART0_LOCAL_PORT = 7500             # LOCAL_PORT of UART0, each uart shares local IP but has a unique port, maximum 65535
-    UART0_LOCAL_PORT_AUTO = self.NO     # local port number set randomly instead of static port NO/YES
+    UART0_LOCAL_PORT_AUTO = self.NO     # local port number set randomly instead of static port, NO/YES
     UART0_BAUD_RATE = 115200            # BAUD_RATE of UART0 serial Port once configuration is complete
     UART0_CLEAR_DATA = self.YES         # Set whether to clear old serial port data once connected to the network, NO/YES
    
@@ -46,7 +46,7 @@ class CH9121:
     UART1_TARGET_IP = (192,168,1,75)    # TARGET_IP of destination
     UART1_TARGET_PORT = 3000            # TARGET_PORT of destination
     UART1_LOCAL_PORT = 6000             # LOCAL_PORT of UART1, each uart shares local IP but has a unique port, maximum 65535
-    UART1_LOCAL_PORT_AUTO = self.NO     # local port number set randomly instead of static port NO/YES
+    UART1_LOCAL_PORT_AUTO = self.NO     # local port number set randomly instead of static port, NO/YES
     UART1_BAUD_RATE = 115200            # BAUD_RATE of UART1 serial port
     UART1_CLEAR_DATA = self.YES         # Set whether to clear old serial port data once connected to the network, NO/YES
       
@@ -116,7 +116,7 @@ class CH9121:
         wait()
         uart0.write(b'\x57\xab\x46\x01\x00\x00\x00') #uart1 serial port setting (Serial timeout \x01\x00\x00\x00 = 1*5ms, after \x46 four bytes need to be filled, and the spaces filled with \x00)
         wait()
-        uart0.write(b'\x57\xab\x47'+self.UART1_LOCAL_PORT_AUTO) #uart1 local port number set randomly instead of static port NO/YES (Either x41 or x47) 
+        uart0.write(b'\x57\xab\x47'+self.UART1_LOCAL_PORT_AUTO) #uart1 local port number set randomly instead of static port, NO/YES (Either x41 or x47) 
         wait()
         uart0.write(b'\x57\xab\x48\x00\x02\x00\x00') #uart1 set receiving packet length (Packing length \x00\x02\x00\x00 = 2*256 = 512 bytes)
         wait()
@@ -275,7 +275,7 @@ class CH9121:
         uart0 = UART(0, baudrate=self.UART0_BAUD_RATE, tx=Pin(0), rx=Pin(1)) 
         
         print('Pico UART0: '+str(uart0))
-        print('Pico UART1: '+str(uart1))
+        #print('Pico UART1: '+str(uart1)) #Figure out how to class Uart1 & Uart0
 
 
     
