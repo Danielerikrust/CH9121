@@ -14,6 +14,7 @@ The default parameters of CH9121 Uart 0:
 - Device/Local port: 2000
 - Target IP: 192.168.1.100
 - Target port: 1000
+- Ethernet Data cache: 6K bytes
 
 The default serial parameters of CH9121 Uart 0 & Uart 1 (These match default Pico parameters, except baud):
 - Baud rate: 9600
@@ -22,6 +23,10 @@ The default serial parameters of CH9121 Uart 0 & Uart 1 (These match default Pic
 - Stop bit: 1
 - Parity bit: None
 - Clear buffer: Never
+- Serial Flow Control: None
+- Serial Cache: 2K bytes
+
+
 
 ## Reset Pin
 
