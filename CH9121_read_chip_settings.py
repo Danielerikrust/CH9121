@@ -97,10 +97,12 @@ u1timeout = str(x[15]) + "*5 ms"
 
 uart0.write(b'\x57\xab\x01') #1 byte reply CH9121 chip version number
 wait()
-uart0.write(b'\x57\xab\x03') #1 byte reply uart0 TCP connection status? 
+uart0.write(b'\x57\xab\x03') #1 byte reply uart0 TCP client connection status? 
 wait()
-uart0.write(b'\x57\xab\x04') #1 byte reply uart1 TCP connection status?
+uart0.write(b'\x57\xab\x04') #1 byte reply uart1 TCP client connection status?
 wait()
+#uart0.write(b'\x57\xab\x67') #1 byte reply read number of reconnections
+#wait()
 
 x=uart0.read(uart0.any())
 ch9121chipnum = str((x[0]))
@@ -110,7 +112,9 @@ if x[1]>0:
     u0connected = "TCP Connected"
 if x[2]>0:
     u1connected = "TCP Connected"
-    
+#CH9121reconnections = str((x[3]))
+
+
 #End Configuration Mode
 uart0.write(b'\x57\xab\x5E') #Leave Serial port configuration mode
 time.sleep(0.1)
@@ -119,16 +123,18 @@ CFG.value(1) #CH9121 configuration pin 14, 0 to config, 1 to exit
 
 print("done")
 time.sleep(0.2)
+
 print()
 print("CH9121 Chip version number: "+ch9121chipnum)
 print("            CH9121 Gateway: "+ch9121gateway)
 print("        CH9121 Subnet Mask: "+ch9121subnet)
 print("           CH9121 Local IP: "+ch9121localip)
 print("        CH9121 Mac Address: "+ch9121mac)
+#print("      CH9121 reconnections: "+ch9121reconnections)
 print()
 
-print("    UART0 Connected to TCP: "+u0connected)
 print("                UART0 Mode: "+u0mode)
+print("UART0 TCP Client Connected: "+u0connected)
 print("           UART0 Target IP: "+u0targetip)
 print("         UART0 Target Port: "+u0targetport)
 print("          UART0 Local Port: "+u0localport)
@@ -137,8 +143,8 @@ print("     UART0 Serial Settings: "+u0serialsettings)
 print("      UART0 Serial Timeout: "+u0timeout)
 print()
 
-print("    UART1 Connected to TCP: "+u1connected)
 print("                UART1 Mode: "+u1mode)
+print("UART1 TCP Client Connected: "+u1connected)
 print("           UART1 Target IP: "+u1targetip)
 print("         UART1 Target Port: "+u1targetport)
 print("          UART1 Local Port: "+u1localport)
