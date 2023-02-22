@@ -9,6 +9,7 @@ Configuration of the CH9121 must be conducted through Uart 0, at 9600 baud.
 The default network parameters of the CH9121
 - Device/Local IP: 192.168.1.200
 - Subnet mask: 255.255.255.0
+- Number of reconnections: unlimited
 
 The default parameters of CH9121 Uart 0:
 - Device/Local port: 2000
