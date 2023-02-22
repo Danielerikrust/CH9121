@@ -126,10 +126,10 @@ time.sleep(0.2)
 
 print()
 print("CH9121 Chip version number: "+ch9121chipnum)
+print("        CH9121 Mac Address: "+ch9121mac)
 print("            CH9121 Gateway: "+ch9121gateway)
 print("        CH9121 Subnet Mask: "+ch9121subnet)
 print("           CH9121 Local IP: "+ch9121localip)
-print("        CH9121 Mac Address: "+ch9121mac)
 #print("      CH9121 reconnections: "+ch9121reconnections)
 print()
 
