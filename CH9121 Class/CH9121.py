@@ -21,8 +21,8 @@ class CH9121:
     subnet = (255,255,254,0)        # subnet for LAN
     localip = (192,168,1,10)        # local IP of CH9121 on LAN, for both Uart0 & Uart1 
     usedhcp = NO                    # turn on DHCP auto-obtained IP and DNS domain access, NO/YES
-    cabledisconnect = NO            # set to disconnect network cable by software command, NO/YES (Optional)
-    devicename = b'PicoEthCH9121'   # devicename of CH9121 as seen on the network, replace "PicoEth". (Optional) (maximum length 28 bytes)
+    cabledisconnect = NO            # set to disconnect network cable by software command, NO/YES 
+    devicename = b'PicoEthCH9121'   # devicename of CH9121 as seen on the network, replace "PicoEth9121". (maximum length 28 bytes)
               
     #Variables specific to UART0 serial port - TCP Client mode by default
     u0mode = 1                      # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
