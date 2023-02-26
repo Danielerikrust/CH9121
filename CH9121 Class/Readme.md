@@ -1,2 +1,4 @@
 # CH9121 Class
-This is a work in progress to create a CH9121 Class which can be initialized through *main.py* directly. The goal is to be able to define the CH9121 parameters directly through *main.py*.
+Copy *CH9121.py* into your Pico /lib directory.
+
+Run CH9121_Demo.py from Thonny to see how easy this new Class structure is. Enjoy.
