@@ -205,7 +205,7 @@ class CH9121:
             u0connected  = "Not in TCP Client Mode"
         if u1mode != chmode[1]:
             u1connected  = "Not in TCP Client Mode"
-        CH9121reconn     = f"{x[3]}"
+        ch9121reconn     = f"{x[3]}"
     
         #End Configuration Mode
         cmd(b'\x5E') #Leave Serial port configuration mode
@@ -234,7 +234,7 @@ class CH9121:
         report(f"            CH9121 Gateway: {ch9121gateway}")
         report(f"        CH9121 Subnet Mask: {ch9121subnet}")
         report(f"           CH9121 Local IP: {ch9121localip}")
-        report(f"    Ethernet Reconnections: {CH9121reconn}")
+        report(f"    Ethernet Reconnections: {ch9121reconn}")
         report()
 
         report(f"                *CH9121 UART0 Settings*")
