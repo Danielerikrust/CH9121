@@ -1,8 +1,8 @@
 from machine import UART, Pin
-import time
+from time import sleep
 
 def wait():
-    time.sleep(0.1)
+    sleep(0.1)
     print("..", end="")
     
     
@@ -18,19 +18,19 @@ uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1)) #configuration commands req
 #Variables specific to CH9121 hat
 GATEWAY = (70,191,200,1)            # GATEWAY / Router for LAN
 SUBNET_MASK = (255,255,255,0)       # SUBNET_MASK for LAN
-LOCAL_IP = (192,168,1,15)           # LOCAL_IP of CH9121 on LAN
+LOCAL_IP = (192,168,1,200)           # LOCAL_IP of CH9121 on LAN
 #DOMAIN_NAME = b'name.com'          # DOMAIN_NAME of CH9121 IP, replace name.com
 
 #Variables specific to UART0 serial port
 UART0_MODE = 1                      # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
-UART0_TARGET_IP = (192,168,1,10)    # TARGET_IP of destination
+UART0_TARGET_IP = (192,168,1,100)    # TARGET_IP of destination
 UART0_TARGET_PORT = 4000            # TARGET_PORT of destination
 UART0_LOCAL_PORT = 5000             # LOCAL_PORT of UART0, each uart shares local IP but has a unique port, maximum 65535
 UART0_BAUD_RATE = 115200            # BAUD_RATE of UART0 serial Port 
 
 #Variables specific to UART1 serial port - UART1 disabled by default
 UART1_MODE = 0                      # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
-UART1_TARGET_IP = (192,168,1,20)    # TARGET_IP of destination
+UART1_TARGET_IP = (192,168,1,150)    # TARGET_IP of destination
 UART1_TARGET_PORT = 3000            # TARGET_PORT of destination
 UART1_LOCAL_PORT = 6000             # LOCAL_PORT of UART1, each uart shares local IP but has a unique port, maximum 65535
 UART1_BAUD_RATE = 115200            # BAUD_RATE of UART1 serial port
