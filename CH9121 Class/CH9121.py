@@ -18,8 +18,8 @@ class CH9121:
 
     #Variables specific to CH9121
     gateway = (192,168,1,1)         # gateway / Router of LAN
-    subnet = (255,255,254,0)        # subnet for LAN
-    localip = (192,168,1,10)        # local IP of CH9121 on LAN, for both Uart0 & Uart1 
+    subnet = (255,255,255,0)        # subnet for LAN
+    localip = (192,168,1,200)        # local IP of CH9121 on LAN, for both Uart0 & Uart1 
     usedhcp = NO                    # turn on DHCP auto-obtained IP and DNS domain access, NO/YES
     cabledisconnect = NO            # set to disconnect network cable by software command, NO/YES 
     devicename = b'PicoEthCH9121'   # devicename of CH9121 as seen on the network, replace "PicoEth9121". (maximum length 28 bytes)
@@ -27,8 +27,8 @@ class CH9121:
     #Variables specific to UART0 serial port - TCP Client mode by default
     u0mode = 1                      # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
     u0targetip = (192,168,1,100)    # IP of destination for UART0
-    u0targetport = 3500             # port of destination for UART0
-    u0localport = 7500              # the local port for UART0, each uart shares the local IP but has a unique port, maximum 65535
+    u0targetport = 2000             # port of destination for UART0
+    u0localport = 1000              # the local port for UART0, each uart shares the local IP but has a unique port, maximum 65535
     u0portauto = NO                 # local port number set randomly instead of static port, NO/YES
     u0baud = 115200                 # baud rate of UART0 serial Port once configuration is complete
     u0cleardata = YES               # set whether to clear old serial port data once connected to the network, NO/YES
@@ -36,7 +36,7 @@ class CH9121:
     #Variables specific to UART1 serial port - UART1 disabled by default
     u1on = NO                       # Turn on UART1 for use on CH9121, NO/YES - Best to initialize by 'eth = CH9121(2)'
     u1mode = 3                      # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
-    u1targetip = (192,168,1,75)     # IP of destination for UART1
+    u1targetip = (192,168,1,150)     # IP of destination for UART1
     u1targetport = 3000             # port of destination for UART1
     u1localport = 6000              # local port of UART1, each uart shares the local IP but has a unique port, maximum 65535
     u1portauto = NO                 # local port number set randomly instead of static port, NO/YES
