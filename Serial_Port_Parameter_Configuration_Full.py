@@ -20,7 +20,7 @@ uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1)) #configuration commands req
 GATEWAY           = (192,168,1,1)   # GATEWAY / Router for LAN
 SUBNET_MASK       = (255,255,255,0) # SUBNET_MASK for LAN
 LOCAL_IP          = (192,168,1,200) # LOCAL_IP of CH9121 on LAN
-#DEVICE_NAME       = b'PICO-CH9121'  # DEVICE_NAME of CH9121 IP, replace name.com
+#DEVICE_NAME       = b'PICO-CH9121'  # DEVICE_NAME of CH9121 on networks
 
 #Variables specific to UART0 serial port
 UART0_MODE        = 1               # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
