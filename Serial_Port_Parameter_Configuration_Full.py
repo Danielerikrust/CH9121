@@ -16,20 +16,20 @@ RST.value(1) #CH9121 external reset input pin 17, (0 active, 1 inactive)
 
 uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1)) #configuration commands required to be sent at a fixed rate of 9600 baud on UART0 only
 
-#Variables specific to CH9121 hat
+#Constants specific to CH9121 hat
 GATEWAY           = (192,168,1,1)   # GATEWAY / Router for LAN
 SUBNET_MASK       = (255,255,255,0) # SUBNET_MASK for LAN
 LOCAL_IP          = (192,168,1,200) # LOCAL_IP of CH9121 on LAN
 #DEVICE_NAME       = b'PICO-CH9121'  # DEVICE_NAME of CH9121 on networks
 
-#Variables specific to UART0 serial port
+#Constants specific to UART0 serial port
 UART0_MODE        = 1               # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
 UART0_TARGET_IP   = (192,168,1,100) # TARGET_IP of destination
 UART0_TARGET_PORT = 1000            # TARGET_PORT of destination
 UART0_LOCAL_PORT  = 2000            # LOCAL_PORT of UART0, each uart shares local IP but has a unique port, maximum 65535
 UART0_BAUD_RATE   = 115200          # BAUD_RATE of UART0 serial Port 
 
-#Variables specific to UART1 serial port - UART1 disabled by default
+#Constants specific to UART1 serial port - UART1 disabled by default
 UART1_MODE        = 3               # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
 UART1_TARGET_IP   = (192,168,1,150) # TARGET_IP of destination
 UART1_TARGET_PORT = 3000            # TARGET_PORT of destination
@@ -59,7 +59,7 @@ uart0.write(b'\x57\xab\x24'+NO) #CH9121 set to diconnect network cable NO/YES (O
 wait()
 uart0.write(b'\x57\xab\x33'+NO) #CH9121 turn on DHCP auto-obtained IP and DNS domain access NO/YES
 wait()
-#uart0.write(b'\x57\xab\x34'+DEVICE_NAME) #CH9121 set domain name (maximum length 28 bytes) (Optional)
+#uart0.write(b'\x57\xab\x34'+DEVICE_NAME) #CH9121 set network device name (maximum length 28 bytes) (Disables auto assignment of 255.255.255.255 in UDP Server Mode)
 wait()
 
 #Set up UART0 on CH9121
