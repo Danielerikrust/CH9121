@@ -115,4 +115,10 @@ Starting from a freshly Reset Pico-ETH-CH9121 chip I changed the following param
 
 You can set a Python socket to write to an IP such as 192.168.0.255 or 192.168.1.255 to reach this broadcast address. You can also configure a second Pico_Eth_CH9121 in UDP Client Mode with a Target_IP such as 192.168.0.255 or 192.168.1.255 to reach the first Pico in UDP Server Mode.
 
-By accident I found that a certain combination of parameter settings disables the auto Target_IP of 255.255.255.255 for UDP Server Mode, although I am still researching exactly what causes it. If your UDP server mode starts failing to read UDP packets then I suggest Reseting the Pico-Eth_CH9121 and setting each parameter newly, thus letting auto Target_IP function properly.
+Use of the **\x34 command** disables the auto assignment of 255.255.255.255 while in UDP Server Mode. This is the *DEVICE_NAME* constant in the Parameter...py file, or the *devicename* variable in the CH9121.py Class. 
+
+    uart0.write(b'\x57\xab\x34'+DEVICE_NAME) #CH9121 set domain name (maximum length 28 bytes) (Optional)
+
+Setting this value to *DOMAIN_NAME = b''* restores the auto assignment of 255.255.255.255 while in UDP Server Mode. 
+
+    DOMAIN_NAME = b''
