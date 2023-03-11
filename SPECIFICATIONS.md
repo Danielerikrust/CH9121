@@ -117,7 +117,7 @@ You can set a Python socket to write to an IP such as 192.168.0.255 or 192.168.1
 
 Use of the **\x34 command** disables the auto assignment of 255.255.255.255 while in UDP Server Mode. This is the *DEVICE_NAME* constant in the Parameter...py file, or the *devicename* variable in the CH9121.py Class. 
 
-    uart0.write(b'\x57\xab\x34'+DEVICE_NAME) #CH9121 set domain name (maximum length 28 bytes) (Optional)
+    uart0.write(b'\x57\xab\x34'+DEVICE_NAME) #CH9121 set network device name (maximum length 28 bytes) (Optional)
 
 Setting this value to *DOMAIN_NAME = b''* restores the auto assignment of 255.255.255.255 while in UDP Server Mode. 
 
