@@ -19,7 +19,7 @@ uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1)) #configuration commands req
 GATEWAY = (192,168,1,1)             # GATEWAY / Router for LAN
 SUBNET_MASK = (255,255,255,0)       # SUBNET_MASK for LAN
 LOCAL_IP = (192,168,1,200)          # LOCAL_IP of CH9121 on LAN
-#DOMAIN_NAME = b'name.com'          # DOMAIN_NAME of CH9121 IP, replace name.com
+#DEVICE_NAME = b'name.com'          # DOMAIN_NAME of CH9121 IP, replace name.com
 
 #Variables specific to UART0 serial port
 UART0_MODE = 1                      # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
@@ -58,7 +58,7 @@ wait()
 wait()
 uart0.write(b'\x57\xab\x33'+NO) #CH9121 turn on DHCP auto-obtained IP and DNS domain access NO/YES
 wait()
-#uart0.write(b'\x57\xab\x34'+DOMAIN_NAME) #CH9121 set domain name (maximum length 28 bytes) (Optional)
+#uart0.write(b'\x57\xab\x34'+DEVICE_NAME) #CH9121 set domain name (maximum length 28 bytes) (Optional)
 wait()
 
 #Set up UART0 on CH9121
