@@ -119,6 +119,6 @@ Use of the **\x34 command** disables the auto assignment of 255.255.255.255 whil
 
     uart0.write(b'\x57\xab\x34'+DEVICE_NAME) #CH9121 set network device name (maximum length 28 bytes) (Optional)
 
-Setting this value to *DOMAIN_NAME = b''* restores the auto assignment of 255.255.255.255 while in UDP Server Mode. 
+Setting this value to *DEVICE_NAME = b''* restores the auto assignment of 255.255.255.255 while in UDP Server Mode. 
 
-    DOMAIN_NAME = b''
+    DEVICE_NAME = b''
