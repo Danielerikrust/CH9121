@@ -4,6 +4,7 @@ Specifications for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi P
 ## Default Parameters
 
 Uart 1 is disabled, and Uart 0 works in *TCP CLIENT* mode by default.
+
 Configuration of the CH9121 must be conducted through Uart 0, at 9600 baud.
 
 The default network parameters of the CH9121
@@ -26,7 +27,6 @@ The default serial parameters of CH9121 Uart 0 & Uart 1 (These match default Pic
 - Clear buffer: Never
 - Serial Flow Control: None
 - Serial Cache: 2K bytes
-
 
 
 
@@ -98,11 +98,11 @@ After a RST running the *CH9121_read_chip_settings.py* file shows that the user 
 ## UDP Server Mode
 Starting from a freshly Reset Pico-ETH-CH9121 chip I changed the following parameters only, before running the *parameters...py* file:
 
->                    UART0_MODE = 2 
+>                        UART0_MODE = 2 
 
 *Read_Settings.py* shows this new change:
 
->                    UART0 Mode: UDP Server
+>                        UART0 Mode: UDP Server
 >        UART0 TCP Client Connected: TCP Disconnected
 >                   UART0 Target IP: 255.255.255.255
 >                 UART0 Target Port: 1000
