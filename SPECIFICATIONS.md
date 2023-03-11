@@ -29,8 +29,51 @@ The default serial parameters of CH9121 Uart 0 & Uart 1 (These match default Pic
 
 
 
-## Reset Pin
 
+## Reset Jumper
+
+(Differentiated from the Reset Jumper)
+
+I asked Waveshare technical support to explain the function of the two holes marked RESET on the bottom of the Pico-ETH-CH9121.
+
+> Question: Could you please tell me how to use the two wire holes marked RESET on the bottom of the pico-eth-ch9121? Thank you.
+
+> Response: They are used for resetting the setting of the module, short the holes and then powering will restore the module to factory setting.
+
+Following this instruction I bent and inserted a 2mm wire to short the holes without soldering as seen in the picture below. 
+
+![Reset Jumper](/images/CH9121Reset.jpg#center)
+
+Then, upon repowering the unit the *CH9121_Read_Settings.py* confirmed factory reset to the chip parameters.
+
+>  
+>                CH9121 Gateway: 192.168.1.1
+>            CH9121 Subnet Mask: 255.255.255.0
+>               CH9121 Local IP: 192.168.1.200
+>  
+>                    UART0 Mode: TCP Client
+>               UART0 Target IP: 192.168.1.100
+>             UART0 Target Port: 1000
+>              UART0 Local Port: 2000
+>        UART0 Serial Baud Rate: 9600
+>         UART0 Serial Settings: 1 stop bit, parity: None, 8 data bits
+>          UART0 Serial Timeout: 0*5 ms
+>  
+>                    UART1 Mode: UDP Server
+>               UART1 Target IP: 192.168.1.100
+>             UART1 Target Port: 2000
+>              UART1 Local Port: 3000
+>        UART1 Serial Baud Rate: 9600
+>         UART1 Serial Settings: 1 stop bit, parity: None, 8 data bits
+>          UART1 Serial Timeout: 0*5 ms
+
+Power off the unit and remove the jumper.
+
+
+## RST Pin
+
+(Differentiated from the Reset Jumper)
+    
     RST = Pin(17, Pin.OUT,Pin.PULL_UP)  #CH9121 external reset input pin, low active
 
     RST.value(0)                        #CH9121 external reset input pin 17, (0 active, 1 inactive)
