@@ -108,7 +108,7 @@ class CH9121:
         cmd(b'\x46\x02\x00\x00\x00') #uart1 serial port setting (Serial timeout \x02\x00\x00\x00 = 2*5ms = 10ms, after \x46 four bytes need to be filled, and the spaces filled with \x00)
         cmd(b'\x47'+self.u1portauto) #uart1 local port number set randomly instead of static port, NO/YES (Either x41 or x47) 
         cmd(b'\x48\x00\x02\x00\x00') #uart1 set receiving packet length (Packing length \x00\x02\x00\x00 = 2*256 = 512 bytes)
-        cmd(b'\x26'+self.u1cleardata) #uart1 set whether to clear old serial port data once connected to the network, NO/YES
+        cmd(b'\x49'+self.u1cleardata) #uart1 set whether to clear old serial port data once connected to the network, NO/YES
 
         #End Configuration and restart CH9121
         cmd(b'\x0D') #Save parameters to EEPROM
