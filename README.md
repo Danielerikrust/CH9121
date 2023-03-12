@@ -25,7 +25,7 @@ https://thonny.org/
     eth.u0targetip   = (192,168,0,123)
     eth.config()
 
-*CH9121_Demo2.py* shows how to use the CH9121 after having adjusted all the constants within the *CH9121.py* file. This meathod is recommended if your Pico maintains consistent network settings.
+*CH9121_Demo2.py* shows how to use the CH9121 after having adjusted all the constants within the *CH9121.py* file. This method is recommended if your Pico maintains consistent network settings.
 
 
 # CH9121 Specifications
