@@ -50,7 +50,7 @@ eth.ethfile = "CH9121settings.txt"  # readsettings() will also write the data to
 
 """Must Config() to incorporate any new settings from above"""
 #First configure the CH9121 for 1 channel uart
-eth.config()
+eth.config(uarts=1, config=False)
 eth.readsettings()
 
 #Then configure it for 2 channel uart
