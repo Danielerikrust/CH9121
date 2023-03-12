@@ -12,7 +12,7 @@ from time import sleep
    
 def cmd(i):
     uart0.write(b'\x57\xab'+i)
-    sleep(.1)
+    sleep(.2)
     print("..", end="")
     
 ethfile = "CH9121config.txt" #The file which will contain a copy of the read on the Pico
