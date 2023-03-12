@@ -27,6 +27,10 @@ https://thonny.org/
 
 *CH9121_Demo2.py* shows how to use the CH9121 after having adjusted all the constants within the *CH9121.py* file. This method is recommended if your Pico maintains consistent network settings.
 
+*mainForPico.py* is the working software for the Pico-ETH-CH9121 hat. The write and read functions are set to Timers instead of interrupts. As a PLC the Pico has great usage performing second by second routines. You can connect two CH9121 Picos over a LAN. Set one to a server mode, and the other to a client mode and they will communicate their internal temperature by Timed read & writes. 
+
+UDP and TCP are both accomodated with this software. Simply change the network parameters for your application and start. For a LAN it is workable to use the local IP of the device also as the Gateway IP.
+
 
 # CH9121 Specifications
 Specifications for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi Pico, and Waveshare 2-Ch_Uart_to_Eth board.
@@ -122,7 +126,7 @@ The RST pin, when given a value of 0, produces the following results for the dur
 
 ![The Board](/images/Pico-ETH-CH9121-Pinout.jpg#center)
 
-After a RST running the *CH9121_read_chip_settings.py* file shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after RST. The RST severs and resets active ethernet connections to the chip.
+After a RST running the *CH9121read.py* file shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after RST. The RST severs and resets active ethernet connections to the chip.
 
 
 ## UDP Server Mode
@@ -143,7 +147,7 @@ Starting from a freshly Reset Pico-ETH-CH9121 chip I changed the following param
 
 **UDP Server Mode** automatically overwrites the Target_IP for that Uart channel to **255.255.255.255**. 
 
-You can set a Python socket to write to an IP such as 192.168.0.255 or 192.168.1.255 to reach this broadcast address. You can also configure a second Pico_Eth_CH9121 in UDP Client Mode with a Target_IP such as 192.168.0.255 or 192.168.1.255 to reach the first Pico in UDP Server Mode.
+You can set a Python socket to write to an IP such as 192.168.0.255 or 192.168.1.255 to reach this broadcast address. 
 
 Use of the **\x34 command** disables the auto assignment of 255.255.255.255 while in UDP Server Mode. This is the *DOMAIN_NAME* constant in the *CH9121config.py* file, or the *domainname* variable in the *CH9121.py* Class. 
 
