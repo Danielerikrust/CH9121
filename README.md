@@ -13,29 +13,19 @@ https://www.waveshare.com/wiki/Pico-ETH-CH9121
 
 ## Installation
 
-Copy *Serial_Port_Parameter_Configuration_Full.py* to the /lib directory of your Pico. Create that directory in Thonny if not already present. To save the network preferences into the CH9121 chip while powered add this to *main.py*.
-
-    import Serial_Port_Parameter_Configuration_Full
+Copy *CH9121.py* to the */lib* directory of your Pico. Create that directory in Thonny if not already present. 
 
 https://thonny.org/
 
-*CH9121_read_chip_settings.py* should also be run from Thonny with the Pico attached. The read file also does not need to be part of main.py, nor stored in /lib. Just run it when you need to check. It incorporates the full range of read options laid out in:
+# Software
 
-https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
+*CH9121_Demo.py* demonstrates using the **CH9121 Class** for Rpi Pico. It shows how to adjust network parameters and reconfigure the CH9121 within your code on the fly. After changing any network setting the *eth.config()* function must be run to import them into the device:
 
-To incorporate a read into your *main.py* startup copy *CH9121_read_chip_settings.py* into the Pico's /lib directory. Then add this to *main.py*:
+    u0mode       = 2                  # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
+    u0targetip   = (192,168,0,123)
+    eth.config()
 
-    import Serial_Port_Parameter_Configuration_Full
-    import CH9121_read_chip_settings
-
-
-## Configuration
-
-Adjust your network settings with the variables in *Serial_Port_Parameter_Configuration_Full.py*. IP addresses are separated by comma and not periods as a micropython list. To find your gateway & subnet mask your router will usually have a sticker with a router loggin such as http://routerlogin.net or its IP Address. It will also show the default login & password. While in the router admin search for its gateway & submask, and assign your CH9121 the same static IP you assinged in the configuration variables. Otherwise your routers DHCP will try to assign it a random IP address. DHCP support can be enabled on the CH9121 with the parameter configuration file if desired. 
-
-You can verify the CH9121 Mac address generated from *CH9121_read_chip_settings.py* against your router admin listing associated with the expected CH9121 IP address.
-
-The Pico_ETH_CH9121 can be pinged from another computer on the LAN when the network settings are correct. And the *CH9121_read_chip_settings.py* file confirms that your Pico UART0 is set up properly for RX & TX with the CH9121 when it outputs data.
+*CH9121_Demo2.py* shows how to use the CH9121 after having adjusted all the constants within the *CH9121.py* file. This meathod is recommended if your Pico maintains consistent network settings.
 
 
 # CH9121 Specifications
