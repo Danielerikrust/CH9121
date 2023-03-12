@@ -11,7 +11,7 @@ from time import sleep
 
 def cmd(i):
     uart0.write(b'\x57\xab'+i)
-    sleep(.1)
+    sleep(.2)
     print("..", end="")
 
 NO                = b'\x00'
