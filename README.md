@@ -17,6 +17,8 @@ Copy *CH9121.py* to the */lib* directory of your Pico. Create that directory in 
 
 https://thonny.org/
 
+Copy *mainForPico.py* to the root directory of the Pico. It may be renamed *main.py* once it is configured.
+
 # Software
 
 *CH9121_Demo.py* demonstrates using the **CH9121 Class** for Rpi Pico. It shows how to adjust network parameters and reconfigure the CH9121 within your code on the fly. After changing any network setting the *eth.config()* function must be run to import them into the device:
