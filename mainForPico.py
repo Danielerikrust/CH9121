@@ -19,15 +19,15 @@ eth = CH9121(uarts=1, config=False)    # Initialize the CH9121 device for both U
 
 eth.domainname    = bytes(b'','utf-8') # Needs to be b'' for UDP Server Mode
 eth.localip       = (192,168,0,91)     # local IP of CH9121 on LAN, for both Uart0 & Uart1 
-eth.gateway       = (192,168,0,91)        # gateway / Router of LAN
+eth.gateway       = (192,168,0,91)     # gateway / Router (If LAN duplicate the device IP as the Gateway)
 
 eth.u0mode        = 1                  # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
-eth.u0targetip    = (192,168,0,81)     # IP of destination for UART0
+eth.u0targetip    = (192,168,0,81)     # IP of destination for UART0, maximum 65535
 eth.u0localport   = 4000               # the local port for UART0, each uart shares the local IP but has a unique port, maximum 65535
 eth.u0targetport  = 4000               # port of destination for UART0
 
 eth.u1mode        = 1                  # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
-eth.u1targetip    = (192,168,0,81)     # IP of destination for UART1
+eth.u1targetip    = (192,168,0,81)     # IP of destination for UART1, maximum 65535
 eth.u1localport   = 5000               # the local port for UART1, each uart shares the local IP but has a unique port, maximum 65535
 eth.u1targetport  = 5000               # port of destination for UART1
 
@@ -83,7 +83,7 @@ def eth1read():
     if (eth.u1on == eth.YES) and (eth.u1.any() > 0):
         data = eth.u1.read(eth.u1.any())
         data = data.decode('utf-8')
-        print(f'{NAME} u0 reads: {data}')   
+        print(f'{NAME} u1 reads: {data}')   
         blink() #Pico led will Blink when it recieves a message
     else:
         print(f'{NAME} u1 listening')
