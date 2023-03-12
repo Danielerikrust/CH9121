@@ -128,7 +128,7 @@ The RST pin, when given a value of 0, produces the following results for the dur
 
 ![The Board](/images/Pico-ETH-CH9121-Pinout.jpg#center)
 
-After a RST running the *CH9121read.py* file shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after RST. The RST severs and resets active ethernet connections to the chip.
+After a RST running *CH9121read.py* shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after RST. The RST severs and resets active ethernet connections to the chip.
 
 
 ## UDP Server Mode
@@ -139,7 +139,6 @@ Starting from a freshly Reset Pico-ETH-CH9121 chip I changed the following param
 *CH9121read.py* shows this new change:
 
 >                        UART0 Mode: UDP Server
->        UART0 TCP Client Connected: TCP Disconnected
 >                   UART0 Target IP: 255.255.255.255
 >                 UART0 Target Port: 1000
 >                  UART0 Local Port: 2000
