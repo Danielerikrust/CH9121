@@ -70,7 +70,7 @@ class CH9121:
         
         def cmd(i):
             self.u0.write(b'\x57\xab'+i)
-            sleep(.3)
+            sleep(.2)
             print("..", end="")
               
         print("Configuring CH9121", end="")
@@ -129,7 +129,7 @@ class CH9121:
 
         def cmd(i):
             self.u0.write(b'\x57\xab'+i)
-            sleep(.3)
+            sleep(.2)
             print("..", end="")
        
         chmode = ["TCP Server", "TCP Client", "UDP Server", "UDP Client"]
