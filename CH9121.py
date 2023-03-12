@@ -189,8 +189,8 @@ class CH9121:
         u1timeout        = f"{x[15] * 5} ms"
 
         cmd(b'\x01') #1 byte reply for CH9121 chip version number
-        cmd(b'\x03') #1 byte reply for uart0 TCP client connection status? 
-        cmd(b'\x04') #1 byte reply for uart1 TCP client connection status?
+        cmd(b'\x03') #1 byte reply for uart0 TCP connection status? 
+        cmd(b'\x04') #1 byte reply for uart1 TCP connection status?
         cmd(b'\x67') #1 byte reply for reading number of reconnections
 
         x=self.u0.read(self.u0.any())
