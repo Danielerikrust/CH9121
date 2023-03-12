@@ -21,8 +21,8 @@ https://thonny.org/
 
 *CH9121_Demo.py* demonstrates using the **CH9121 Class** for Rpi Pico. It shows how to adjust network parameters and reconfigure the CH9121 within your code on the fly. After changing any network setting the *eth.config()* function must be run to import them into the device:
 
-    u0mode       = 2                  # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
-    u0targetip   = (192,168,0,123)
+    eth.u0mode       = 2                  # Mode 0:TCP Server, Mode 1:TCP Client, Mode 2:UDP Server, Mode 3:UDP Client
+    eth.u0targetip   = (192,168,0,123)
     eth.config()
 
 *CH9121_Demo2.py* shows how to use the CH9121 after having adjusted all the constants within the *CH9121.py* file. This meathod is recommended if your Pico maintains consistent network settings.
