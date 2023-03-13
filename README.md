@@ -201,14 +201,15 @@ I reason it does this intentionally, to leave UART0 open for querry commands wit
 
 We can establish the following hardware & software associations:
 
->    command .write(b'\x57\xab\x03') = uart0 TCP connection status = TCPCS1 (CH9121 chip pin 30) = CH1 LED
->    command .write(b'\x57\xab\x04') = uart1 TCP connection status = TCPCS2 (CH9121 chip pin 33) = CH2 LED
+>     command .write(b'\x57\xab\x03') = uart0 TCP connection status = TCPCS1 (CH9121 chip pin 30) = CH1 LED
+>     
+>     command .write(b'\x57\xab\x04') = uart1 TCP connection status = TCPCS2 (CH9121 chip pin 33) = CH2 LED
 
 Use of the **\x34 command** disrupts TCP connectivity. This is the *DOMAIN_NAME* constant in the *CH9121config.py* file, or the *domainname* variable in the *CH9121.py* Class. 
 
     uart0.write(b'\x57\xab\x34'+DOMAIN_NAME) #CH9121 set network device name (maximum length 28 bytes) (Optional)
 
-Setting this value to *DOMAIN_NAME = b''* restores TCP connectivety to the chip.. 
+Setting this value to *DOMAIN_NAME = b''* restores TCP connectivety to the chip.
 
     DOMAIN_NAME = b''
 
