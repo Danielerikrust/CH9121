@@ -55,7 +55,7 @@ def picotempF():
     return (f'{temp:.2f}{chr(176)}F')
 
 def eth0write():    
-    data = f'{NAME} u0 writes {picotempF()}'
+    data = f'{NAME} u0 is {picotempF()}'
     print(data)
     data.encode('utf-8')
     eth.u0.write(data)
@@ -63,7 +63,7 @@ def eth0write():
 
 def eth1write():    
     if eth.u1on == eth.YES:
-        data = f'{NAME} u1 writes {picotempF()}'
+        data = f'{NAME} u1 is {picotempF()}'
         print(data)
         data.encode('utf-8')
         eth.u1.write(data)
