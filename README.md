@@ -199,6 +199,11 @@ I reason it does this intentionally, to leave UART0 open for querry commands wit
     command .write(b'\x57\xab\x04') = uart1 TCP connection status
     command .write(b'\x67\xab\x03') = number of TCP reconnections
 
+Experimentation shows that we can set both Uarts on Pico 91 to have identical target ports. These will both connect to the same Uart1 local port on Pico 81. This strategy also leaves Uart 0 open for real time querries. I will experiment with these real time querries to validate the hypothesis.
+
+    eth.u0targetport = 4000
+    eth.u1targetport = 4000
+
 We can establish the following hardware & software associations:
 
 >     command .write(b'\x57\xab\x03') = uart0 TCP connection status = TCPCS1 (CH9121 chip pin 30) = CH1 LED
