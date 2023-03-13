@@ -10,7 +10,7 @@ https://www.waveshare.com/w/upload/e/ef/CH9121_SPCC.pdf
 
 https://www.waveshare.com/wiki/Pico-ETH-CH9121
 
-I'd like to give special acknowledgment to SplashAudio for his early work on yhe CH9121 chip. Thank you.
+I'd like to give special acknowledgment to SplashAudio for his early work on the CH9121 chip which set the stage for this Repository. Thank you.
 
 https://github.com/Splashaudio/Pico-ETH-CH9121_basic
 
