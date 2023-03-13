@@ -1,6 +1,6 @@
 # CH9121
 
-Micropython files for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi Pico, and Waveshare 2-Ch_Uart_to_Eth board.
+Micropython files for the Waveshare **Pico_ETH_CH9121** ethernet hat for Raspberry Pi Pico, and Waveshare **2-Ch_Uart_to_Eth** board. These cover configuring the CH9121 chip, reading existing settings, and Pico software to get up and running.
 
 ![The Board](/images/Pico-ETH-CH9121.jpg#center)
 
