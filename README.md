@@ -33,7 +33,7 @@ Copy *mainForPico.py* to the root directory of the Pico. It may be renamed *main
 
 *CH9121_Demo2.py* shows how to use the CH9121 after having adjusted all the constants within the *CH9121.py* file. This method is recommended if your Pico maintains consistent network settings.
 
-*mainForPico.py* is the working software for the Pico-ETH-CH9121 hat. The write and read functions are set to Timers instead of interrupts. As a PLC the Pico has great usage performing second by second routines. You can connect two CH9121 Picos over a LAN. Set one to a server mode, and the other to a client mode and they will communicate their internal temperature by Timed read & writes. Set the Timers to whatever period you wish. perhaps write second by second ‘(PERIOD=1000)‘, and read for new data every tenth of a second ‘(PERIOD=100)‘).
+*mainForPico.py* is the working software for the Pico-ETH-CH9121 hat. The write and read functions are set to Timers instead of interrupts. As a PLC the Pico has great usage performing second by second routines. You can connect two CH9121 Picos over a LAN. Set one to a server mode, and the other to a client mode and they will communicate their internal temperature by Timed read & writes. Set the Timers to whatever period you wish. perhaps write second by second `(PERIOD=1000)`, and read for new data every tenth of a second `(PERIOD=100)`). 
 
 UDP and TCP are both accomodated with this software. Simply change the network parameters and Mode for your application and start. For a LAN it is workable to use the local IP of the device also as the Gateway IP.
 
