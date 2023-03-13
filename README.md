@@ -131,7 +131,7 @@ The RST pin, when given a value of 0, produces the following results for the dur
 After a RST running *CH9121read.py* shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after RST. The RST severs and resets active ethernet connections to the chip.
 
 
-## TCP Connection Status LEDs
+## TCP Modes & Connection Status LEDs
 
 The board has two led's which indicate a TCP connection. - **(Image #1 & 2)**
 
@@ -193,10 +193,24 @@ Using *CH9121read.py* reveals the following for Pico 91:
 
 However, both UART0 and UART1 on Pico 81 are actually reading the correct data sent from Pico 91. It appears that the CH9121 chip merges connections from TCP clients down to a single active TCP server connection on UART 1, And so only the CH2 LED is active. The CH9121 chip then redistributes incoming data from different ports to the corresponding UART.
 
-From this we can establish the following associations:
+I reason it does this intentionally, to leave UART0 open for querry commands without interrupting an active connection. These include commands such as:
 
->    CH9121read.py command .write(b'\x57\xab\x03') = uart0 TCP connection status = TCPCS1 (CH9121 chip pin 30) = CH1 LED
->    CH9121read.py command .write(b'\x57\xab\x04') = uart1 TCP connection status = TCPCS2 (CH9121 chip pin 33) = CH2 LED
+    command .write(b'\x57\xab\x03') = uart0 TCP connection status
+    command .write(b'\x57\xab\x04') = uart1 TCP connection status
+    command .write(b'\x67\xab\x03') = number of TCP reconnections
+
+We can establish the following hardware & software associations:
+
+>    command .write(b'\x57\xab\x03') = uart0 TCP connection status = TCPCS1 (CH9121 chip pin 30) = CH1 LED
+>    command .write(b'\x57\xab\x04') = uart1 TCP connection status = TCPCS2 (CH9121 chip pin 33) = CH2 LED
+
+Use of the **\x34 command** disrupts TCP connectivity. This is the *DOMAIN_NAME* constant in the *CH9121config.py* file, or the *domainname* variable in the *CH9121.py* Class. 
+
+    uart0.write(b'\x57\xab\x34'+DOMAIN_NAME) #CH9121 set network device name (maximum length 28 bytes) (Optional)
+
+Setting this value to *DOMAIN_NAME = b''* restores TCP connectivety to the chip.. 
+
+    DOMAIN_NAME = b''
 
 
 ## UDP Server Mode
