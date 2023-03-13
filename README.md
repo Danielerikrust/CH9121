@@ -142,8 +142,8 @@ These are listed as:
 
 It is more applicable to label these leds as:
 
->    1. UART 1 TCP connection indicator
->    2. UART 0 TCP connection indicator
+>    1. UART 1 TCP connection indicator (CH2 LED)
+>    2. UART 0 TCP connection indicator (CH1 LED)
   
 ![Board Hardware](/images/CH9121_WhatsOnBoard.png#center)
 
@@ -155,28 +155,48 @@ For my own project I will be networking a pair of Picos to a Raspberry Pi 4B, al
 
 In the picture both uarts of 81 are set to TCP Server Mode. And both channels of 91 are set to TCP Client Mode.
 
->    Server 81 has the following settings:
->    local IP           = 192.168.0.81
->    target IP          = 192.168.0.91
->    uart0 local port   = 8100
->    uart0 target port  = 9100
->    
->    uart1 local port   = 8101
->    uart1 target port  = 9101
+Using *CH9121read.py* reveals the following for Pico 81:
 
->    Client 91 has the following settings:
->    local IP           = 192.168.0.91
->    target IP          = 192.168.0.81
->    
->    uart0 local port   = 9100
->    uart0 target port  = 8100
->    
->    uart1 local port   = 9101
->    uart1 target port  = 8101
+>           CH9121 Local IP: 192.168.0.81
+>                *CH9121 UART0 Settings*
+>                UART0 Mode: TCP Server
+>          UART0 TCP Status: TCP Disconnected (TCP LED CH1 is OFF)
+>           UART0 Target IP: 192.168.0.91
+>         UART0 Target Port: 9100
+>          UART0 Local Port: 8100
+>          
+>                *CH9121 UART1 Settings*
+>                     UART1: Enabled
+>                UART1 Mode: TCP Server
+>          UART1 TCP Status: TCP Connected  (TCP LED CH2 is ON)
+>           UART1 Target IP: 192.168.0.91
+>         UART1 Target Port: 9101
+>          UART1 Local Port: 8101
 
-The results show that:
-- Both TCP leds for the client are on
-- The server has only UART 1 TCP led active, despite being contacted on two separate ports.
+Using *CH9121read.py* reveals the following for Pico 91:
+
+>           CH9121 Local IP: 192.168.0.91
+>                *CH9121 UART0 Settings*
+>                UART0 Mode: TCP Client
+>          UART0 TCP Status: TCP Connected (TCP LED CH1 is ON)
+>           UART0 Target IP: 192.168.0.81
+>         UART0 Target Port: 8100
+>          UART0 Local Port: 9100
+>          
+>                *CH9121 UART1 Settings*
+>                     UART1: Enabled
+>                UART1 Mode: TCP Client
+>          UART1 TCP Status: TCP Connected (TCP LED CH2 is ON)
+>           UART1 Target IP: 192.168.0.81
+>         UART1 Target Port: 8101
+>          UART1 Local Port: 9101
+
+However, both UART0 and UART1 on 91 are actually reading the correct data sent from 81. It appears that the CH9121 chip merges connections from TCP clients down to a single active TCP server connection, and then redistributes incoming data from different ports to the corresponding UART.
+
+From this we can establish the following associations:
+
+>    CH9121read.py command .write(b'\x57\xab\x03') = uart0 TCP connection status = TCPCS1 (CH9121 chip pin 30) = CH1 LED
+>    CH9121read.py command .write(b'\x57\xab\x04') = uart1 TCP connection status = TCPCS2 (CH9121 chip pin 33) = CH2 LED
 
 
 ## UDP Server Mode
@@ -195,8 +215,6 @@ Starting from a freshly Reset Pico-ETH-CH9121 chip I changed the following param
 >              UART0 Serial Timeout: 0*5 ms
 
 **UDP Server Mode** automatically overwrites the Target_IP for that Uart channel to **255.255.255.255**. 
-
-You can set a Python socket to write to an IP such as 192.168.0.255 or 192.168.1.255 to reach this broadcast address. 
 
 Use of the **\x34 command** disables the auto assignment of 255.255.255.255 while in UDP Server Mode. This is the *DOMAIN_NAME* constant in the *CH9121config.py* file, or the *domainname* variable in the *CH9121.py* Class. 
 
