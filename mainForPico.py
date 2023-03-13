@@ -90,10 +90,12 @@ def eth1read():
     #End eth1read()
 
 """Main Operating Section"""
-# Timer repeats its function in periods of milliseconds, 1000=1 sec
+# Timer repeats its function in periods of milliseconds, period=1000 = 1 sec recurrance
+# Timer can only pass a Timer object to the function it calls. Thus the read & write functions are designed not call other variables.
 
 write0timer = Timer(-1, period=4000, mode=Timer.PERIODIC, callback=lambda w0:eth0write())
 read0timer  = Timer(-1, period=2000, mode=Timer.PERIODIC, callback=lambda r0:eth0read())
-if eth.u1on == eth.YES:
+
+if eth.u1on == eth.YES: # Set Uart1 Timers if it has been configured
     write1timer = Timer(-1, period=4000, mode=Timer.PERIODIC, callback=lambda w1:eth1write())
     read1timer  = Timer(-1, period=2000, mode=Timer.PERIODIC, callback=lambda r1:eth1read())    
