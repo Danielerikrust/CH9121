@@ -130,7 +130,8 @@ The RST pin, when given a value of 0, produces the following results for the dur
 
 After a RST running *CH9121read.py* shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after RST. The RST severs and resets active ethernet connections to the chip.
 
-## TCP Connection Status
+
+## TCP Connection Status LEDs
 
 The board has two led's which indicate a TCP connection. - **(Image #1 & 2)**
 
@@ -146,7 +147,36 @@ It is more applicable to label these leds as:
   
 ![Board Hardware](/images/CH9121_WhatsOnBoard.png#center)
 
-These leds are unresponsive in either UDP mode. 
+These leds are unresponsive in either UDP mode. In TCP modes these leds only light up once a connection has been established.
+
+For my own project I will be networking a pair of Picos to a Raspberry Pi 4B, along with several ethernet connected analyzers providing real time data. As such I have a pair of Picos for use to experiment with the Pico-ETH-CH9121. These have 20x4 LCD screens attached for addition communication while I'm off Thonny. I call them 81 & 91.
+
+![Pair of Picos](/images/dualPicos2.jpg#center)
+
+In the picture both uarts of 81 are set to TCP Server Mode. And both channels of 91 are set to TCP Client Mode.
+
+>    Server 81 has the following settings:
+>    local IP           = 192.168.0.81
+>    target IP          = 192.168.0.91
+>    uart0 local port   = 8100
+>    uart0 target port  = 9100
+>    
+>    uart1 local port   = 8101
+>    uart1 target port  = 9101
+
+>    Client 91 has the following settings:
+>    local IP           = 192.168.0.91
+>    target IP          = 192.168.0.81
+>    
+>    uart0 local port   = 9100
+>    uart0 target port  = 8100
+>    
+>    uart1 local port   = 9101
+>    uart1 target port  = 8101
+
+The results show that:
+- Both TCP leds for the client are on
+- The server has only UART 1 TCP led active, despite being contacted on two separate ports.
 
 
 ## UDP Server Mode
