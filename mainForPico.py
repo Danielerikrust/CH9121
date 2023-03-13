@@ -17,7 +17,7 @@ led=Pin(25,Pin.OUT,value=0) #LED off by default
 """CH9121 Ethernet Setup Section"""
 eth = CH9121(uarts=1, config=False)    # Initialize the CH9121 device for both Uart0 & Uart1, manual config()
 
-eth.domainname    = bytes(b'','utf-8') # Needs to be b'' for UDP Server Mode
+eth.domainname    = b''                # Needs to be b'' for UDP Server Mode
 eth.localip       = (192,168,0,91)     # local IP of CH9121 on LAN, for both Uart0 & Uart1 
 eth.gateway       = (192,168,0,91)     # gateway / Router (If LAN duplicate the device IP as the Gateway)
 
