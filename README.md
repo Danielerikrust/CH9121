@@ -191,7 +191,7 @@ Using *CH9121read.py* reveals the following for Pico 91:
 >         UART1 Target Port: 8101
 >          UART1 Local Port: 9101
 
-However, both UART0 and UART1 on 91 are actually reading the correct data sent from 81. It appears that the CH9121 chip merges connections from TCP clients down to a single active TCP server connection, and then redistributes incoming data from different ports to the corresponding UART.
+However, both UART0 and UART1 on Pico 81 are actually reading the correct data sent from Pico 91. It appears that the CH9121 chip merges connections from TCP clients down to a single active TCP server connection on UART 1, And so only the CH2 LED is active. The CH9121 chip then redistributes incoming data from different ports to the corresponding UART.
 
 From this we can establish the following associations:
 
