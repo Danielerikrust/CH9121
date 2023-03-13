@@ -119,16 +119,34 @@ The RST pin, when given a value of 0, produces the following results for the dur
 - The left and right lights on the CH9121 RJ45 connector go off. **(Image #8)**
 - On an external Switch the attached port usually shows a yellow blinking light indicating 100M/10M speed with activity. During a RST this light is off.
 
-![The Board](/images/Pico-ETH-CH9121-Board.jpg#center)
+![Board Hardware](/images/Pico-ETH-CH9121-Board.jpg#center)
 
 - Pico TX GPIO0 and GPIO4 remain high (value 1).
 - Pico RX GPIO1 and GPIO5 go low (value 0).
 - Pico Config GPIO14 remains high (value 1).
 - Pico Reset GPIO17 remains low (value 0).
 
-![The Board](/images/Pico-ETH-CH9121-Pinout.jpg#center)
+![Pinout](/images/Pico-ETH-CH9121-Pinout.jpg#center)
 
 After a RST running *CH9121read.py* shows that the user configuration settings are still in CH9121 memory. Wireshark confirms the CH9121 is still using its last configurations even after RST. The RST severs and resets active ethernet connections to the chip.
+
+## TCP Connection Status
+
+The board has two led's which indicate a TCP connection. - **(Image #1 & 2)**
+
+These are listed as:
+
+>    1. UART 2 connection indicator
+>    2. UART 1 connection indicator
+
+It is more applicable to label these leds as:
+
+>    1. UART 1 TCP connection indicator
+>    2. UART 0 TCP connection indicator
+  
+![Board Hardware](/images/CH9121_WhatsOnBoard.png#center)
+
+These leds are unresponsive in either UDP mode. 
 
 
 ## UDP Server Mode
