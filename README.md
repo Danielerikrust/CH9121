@@ -37,7 +37,6 @@ Copy *mainForPico.py* to the root directory of the Pico. It may be renamed *main
 
 UDP and TCP modes are both accomodated with this software. Simply change the network parameters and Mode for your application and start. For a LAN it is workable to use the local IP of the device also as the Gateway IP.
 
-
 # CH9121 Specifications
 Specifications for the Waveshare Pico_ETH_CH9121 ethernet hat for Raspberry Pi Pico, and Waveshare 2-Ch_Uart_to_Eth board.
 
@@ -247,13 +246,53 @@ Use of the **\x34 command** disables the auto assignment of 255.255.255.255 whil
 Setting this value to *DOMAIN_NAME = b''* restores the auto assignment of 255.255.255.255 while in UDP Server Mode. 
 
     DOMAIN_NAME = b''
+    
+# Troubleshooting
 
+## Wireshark for Troubleshooting
 
-## Summary 
+The Pico-Eth-CH9121 wraps UART write data in TCP/IP addressing information, before forwarding it onto the target IP address & port. It then strips the TCP/IP headers off incoming data before sending it via UART to the Pico.
 
-As I understand it the CH9121 is supposed to wrap the UART write data in TCP/IP addressing information, before forwarding it onto the target IP address & port. It then strips the TCP/IP off incoming data before sending it via UART to the Pico. 
+As such, much of the chips functionality is hidden. The chip is intended to be an invisible component. However, it happens that the chip can be undertaking its own functions and become stuck or trapped, quite unknown to the Pico. The Pico merrily continues on its way performing reads & writes, never knowing that none of these communications have ever been executed past the CH9121. Even the active querries generated through Uart 0 can only provide a limited understanding of how or why the chip may get stuck.
 
-I am developing this software for use having a Pico communicate to a Rpi4B over a LAN. Ultimately I need two Picos as clients to a Rpi4B server over PoE switcher, as a stand alone LAN. This requires data transfer from Micropython UART commands to Python sockets and back. I'll update this repository as the communications software is developed and tested. 
+I have found it essential to use [Wireshark](https://www.wireshark.org/download.html) software when debugging this chip. This software is free and can show you what the CH9121 is doing in the TCP/IP layers of your network. After a short learning curve you'll be able to identify your Pico device and see the sorts of things it is doing on your network. You'll also be able to see the loops it gets stuck in. This is how the 192.168.1.100 void was discovered.
+
+> Wireshark® is a network protocol analyzer. It lets you capture and interactively browse the traffic running on a computer network. It has a rich and powerful feature set and is world’s most popular tool of its kind. It runs on most computing platforms including Windows, macOS, Linux, and UNIX. Network professionals, security experts, developers, and educators around the world use it regularly. It is freely available open source, and is released under the GNU General Public License version 2.
+
+[Wireshark](https://www.wireshark.org/download.html)
+
+## Gateway while on LAN
+
+It has been found that the pico-ETH-CH9121 will continue to search for a true gateway when it is installed in a stand alone LAN. In some cases it will not allow other connections to go forward until the gateway has been found. If no gateway to the external internet exists, or if your device will never be contacting the external internet then set the gateway the same as the local IP. In this mode the CH9121 chip will automatically locate itself and then no longer seek any further gateway functions.
+
+    eth.localip      = 192.168.0.91
+    eth.gateway      = eth.localip
+
+## Connection Times
+
+I have found it takes 5-10 seconds for the Pico-Eth-CH9121 to establish a connection with its terget IP after power on, or at the end of a `eth.config()`. It may be wise to establish a micropython sleep period before entering the main part of your code, to allow for this connection to be established.
+
+   sleep(10)
+
+## The 192.168.1.100 Void
+
+Rarely the CH9121 has been found to lock up into its default values. In particular it can get stuck trying to locate a target IP of `192.168.1.100`, despite having something on the order of `eth.u0targetip = 192.168.0.50`. Being stuck trying to locate this phantom address the CH9121 will not allow other connections to be established. Once this IP address has been located the chip will continue with its desired connections.
+
+You may assign some neutral network device the IP of `192.168.1.100`, such as a Managed Switch. Or a reset of the chip using the Reset Jumper, followed by a renewed `eth.config()`. Either route may unstick it. 
+
+## The Domain Name Paradox
+
+Use of the **\x34 command** disables a number of features on the chip. This is the *DOMAIN_NAME* constant in the *CH9121config.py* file, or the *domainname* variable in the *CH9121.py* Class. 
+
+    uart0.write(b'\x57\xab\x34'+DOMAIN_NAME) #CH9121 set network device name (maximum length 28 bytes) (Optional)
+
+I have found no usage of this command which does anything other than disable the chip from proper function. Perhaps it has a use, but it is recommended to leave this setting at the null value of *DOMAIN_NAME = b''*. Experimentation may reveal proper use of this command for advanced applications. Otherwise leave it null.
+
+    DOMAIN_NAME = b''
+
+# Summary 
+
+I am developing this software for use having several Picos communicate to a Rpi4B over a LAN. Ultimately I need two Picos as clients to a Rpi4B server over PoE switcher, as a stand alone LAN. This requires data transfer from Micropython UART commands to Python sockets and back. I'll update this repository as the communications software is developed and tested. 
 
 I recommend the use of this [Freenove Breakout Board for Pico](https://www.amazon.com/FREENOVE-Breakout-Raspberry-Terminal-Shield/dp/B0BFB53Y2N/ref=sr_1_3?crid=277Y10PM3UV1E&keywords=freenove+pico+breakout+board&qid=1674280060&sprefix=freenova+pico+breakout+boar%2Caps%2C125&sr=8-3
 ) to confirm GPIO pin usage by LED. It has been very helpful towards this project.
