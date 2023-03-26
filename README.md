@@ -259,6 +259,10 @@ I have found it essential to use [Wireshark](https://www.wireshark.org/download.
 
 > Wireshark® is a network protocol analyzer. It lets you capture and interactively browse the traffic running on a computer network. It has a rich and powerful feature set and is world’s most popular tool of its kind. It runs on most computing platforms including Windows, macOS, Linux, and UNIX. Network professionals, security experts, developers, and educators around the world use it regularly. It is freely available open source, and is released under the GNU General Public License version 2.
 
+The Pico-Eth-CH9121 initially shows up in Wireshark SOURCE as "JiangsuQ_", followed by the last 3 numbers of its MAC address. `JiangsuQ_44:ec:2b` Once a connection has been established the device will have the SOURCE of its Local IP. Here is a screen shot of two CH9121 devices forming a TCP connection. These have local IPs of 192.168.0.91 (`JiangsuQ_44:ec:2b`) & 192.168.0.81 (`JiangsuQ_44:ec:0e`). Once you know what to look for it is easy to determine what each device is doing in the background, one packet at a time.
+
+![Wireshark Software](/images/Wireshark.png#center)
+
 [Wireshark](https://www.wireshark.org/download.html)
 
 ## Gateway while on LAN
