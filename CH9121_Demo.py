@@ -44,6 +44,7 @@ eth.u1cleardata = YES               # set whether to clear old serial port data 
 eth.readtofile = True               # readsettings() will also write the data to ethfile when readtofile = True
 eth.ethfile = "CH9121config.txt"    # readsettings() will also write the data to ethfile when readtofile = True
 
+print(eth)                          # prints current settings as held in the CH9121 Class
 
 """Manual Config() to incorporate any new settings from above"""
 #First configure the CH9121 for 1 channel uart
