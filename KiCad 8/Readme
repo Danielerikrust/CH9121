@@ -1,1 +1,5 @@
 Schematic and Footprint files for the Pico-ETH-CH9121, designed with KiCad 8.
+
+The .mod file is the schematic.
+
+The .kicad_sym file is the footprint.
